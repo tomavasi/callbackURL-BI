@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import requests
 import os
 
-
 app = Flask(__name__)
 load_dotenv('.env')
 # Environment variables for security
@@ -60,7 +59,6 @@ def refresh():
     token_json = token_response.json()
     access_token = token_json.get('access_token')
     new_refresh_token = token_json.get('refresh_token')
-    print(access_token)
 
     # Store the new tokens securely (e.g., in a database)
     # For demonstration, we'll just return them
