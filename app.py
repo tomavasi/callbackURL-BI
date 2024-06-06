@@ -27,24 +27,25 @@ def callback():
     auth_code = request.args.get('code')
 
     # Exchange the authorization code for an access token
-    token_response = requests.post(TOKEN_URL, data={
-        'grant_type': 'authorization_code',
-        'code': auth_code,
-        'redirect_uri': REDIRECT_URI,
-        'client_id': CLIENT_ID,
-        'client_secret': CLIENT_SECRET
-    })
+    # token_response = requests.post(TOKEN_URL, data={
+    #     'grant_type': 'authorization_code',
+    #     'code': auth_code,
+    #     'redirect_uri': REDIRECT_URI,
+    #     'client_id': CLIENT_ID,
+    #     'client_secret': CLIENT_SECRET
+    # })
 
-    token_json = token_response.json()
-    access_token = token_json.get('access_token')
-    refresh_token = token_json.get('refresh_token')
+    # token_json = token_response.json()
+    # access_token = token_json.get('access_token')
+    # refresh_token = token_json.get('refresh_token')
 
     # Store the tokens securely (e.g., in a database)
     # For demonstration, we'll just return them
-    return jsonify({
-        'access_token': access_token,
-        'refresh_token': refresh_token
-    })
+    return auth_code
+# jsonify({
+#         'access_token': access_token,
+#         'refresh_token': refresh_token
+#     })
 
 @app.route('/refresh', methods=['POST'])
 def refresh():
